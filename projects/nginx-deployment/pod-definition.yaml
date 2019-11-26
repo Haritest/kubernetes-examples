@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+   name: myapp-pod
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 #
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: index
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: index
+          configMap:
+              name: index
+
+
+
