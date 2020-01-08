@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-service
+spec:
+  ports:
+  - port: 8002
+    targetPort: 80
+    protocol: TCP
+  type: NodePort
+  selector:
+    app: nginx-configmap
+
+
